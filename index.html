@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questos — атмосферные квесты в Новосибирске</title>
+<meta name="description" content="Questos — атмосферные квесты в Новосибирске: «Пираты» и «Тайна шпиона». Идеально для дня рождения, детских праздников и компаний до 12 человек. От 3500 ₽ за команду.">
+<meta name="theme-color" content="#07070a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07070a;
+  --bg-2:#0d0c11;
+  --surface:#131118;
+  --surface-2:#1a1720;
+  --line:rgba(214,178,110,.16);
+  --line-strong:rgba(214,178,110,.38);
+  --text:#e9e3d6;
+  --muted:#9b9385;
+  --gold:#d6b26e;
+  --gold-bright:#f3d596;
+  --blood:#a3162a;
+  --blood-glow:rgba(190,24,48,.45);
+  --radius:14px;
+  --maxw:1180px;
+  --serif:"Cormorant Garamond", Georgia, serif;
+  --sans:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font:400 16px/1.65 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--blood);color:#fff}
+
+/* film grain over everything */
+body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:100;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-4%)}60%{transform:translate(-4%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font:600 12px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.eyebrow::before{content:"";display:inline-block;width:28px;height:1px;background:var(--gold);vertical-align:middle;margin-right:12px;opacity:.7}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.05;letter-spacing:.005em}
+h2{font-size:clamp(34px,5vw,58px);margin:14px 0 18px}
+h2 em{font-style:italic;color:var(--gold)}
+.lead{color:var(--muted);font-size:18px;max-width:640px}
+section{position:relative;padding:110px 0}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:999px;font:700 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border:1px solid transparent;transition:transform .25s, box-shadow .25s, background .25s, border-color .25s}
+.btn-blood{background:linear-gradient(180deg,#c01d34,#86101f);color:#fff;box-shadow:0 0 0 1px rgba(255,90,110,.25) inset,0 10px 40px -10px var(--blood-glow)}
+.btn-blood:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,120,140,.4) inset,0 16px 50px -8px rgba(220,30,60,.65)}
+.btn-ghost{border-color:var(--line-strong);color:var(--gold-bright)}
+.btn-ghost:hover{background:rgba(214,178,110,.08);border-color:var(--gold)}
+.btn svg{width:16px;height:16px}
+
+/* header */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .35s, border-color .35s, backdrop-filter .35s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(7,7,10,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
+.logo{font:700 italic 30px/1 var(--serif);letter-spacing:.02em;color:var(--gold-bright);text-shadow:0 0 24px rgba(214,178,110,.35)}
+.logo span{color:var(--blood);font-style:normal}
+.nav ul{display:flex;gap:30px;list-style:none}
+.nav ul a{white-space:nowrap;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .2s;position:relative}
+.nav ul a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--gold);transition:right .3s}
+.nav ul a:hover{color:var(--text)}
+.nav ul a:hover::after{right:0}
+.nav-phone{margin-left:auto;font-weight:700;letter-spacing:.04em;color:var(--text);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.nav-phone svg{width:16px;height:16px;color:var(--gold)}
+.burger{display:none;background:none;border:0;color:var(--text);width:40px;height:40px;cursor:pointer}
+.burger svg{width:26px;height:26px}
+
+/* hero */
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-3;background:url("https://questos.ru/r/img/red-woman-1200x680.jpg") 70% 30%/cover no-repeat;filter:grayscale(.2) brightness(.8) contrast(1.1);transform:scale(1.08);animation:drift 30s ease-in-out infinite alternate}
+@keyframes drift{to{transform:scale(1.16) translate(-1.5%,-1%)}}
+.hero-dark{position:absolute;inset:0;z-index:-2;pointer-events:none;
+  background:radial-gradient(circle 320px at var(--mx,72%) var(--my,45%),transparent 0,rgba(7,7,10,.15) 50%,rgba(7,7,10,.72) 100%),
+             linear-gradient(90deg,rgba(7,7,10,.92) 0%,rgba(7,7,10,.45) 50%,rgba(7,7,10,.05) 100%);
+  transition:background .08s}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40%;z-index:-1;background:linear-gradient(transparent,var(--bg))}
+.fog{position:absolute;inset:auto -20% -10% -20%;height:55%;z-index:-1;pointer-events:none;opacity:.5;
+  background:radial-gradient(ellipse at 20% 70%,rgba(200,200,215,.18),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(200,200,215,.14),transparent 55%);
+  filter:blur(20px);animation:fog 22s ease-in-out infinite alternate}
+.fog.f2{animation-duration:34s;animation-direction:alternate-reverse;opacity:.35}
+@keyframes fog{to{transform:translateX(12%)}}
+.hero h1{font-size:clamp(46px,8.4vw,112px);max-width:900px;margin:22px 0 26px;text-shadow:0 6px 40px rgba(0,0,0,.7)}
+.hero h1 .flicker{color:var(--blood);font-style:italic;text-shadow:0 0 30px var(--blood-glow);animation:flicker 6s infinite}
+@keyframes flicker{0%,18%,22%,25%,53%,57%,100%{opacity:1}20%,24%,55%{opacity:.35}}
+.hero p{font-size:clamp(17px,1.6vw,20px);color:#c9c1b2;max-width:560px;margin-bottom:38px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:40px;margin-top:64px;padding-top:28px;border-top:1px solid var(--line);max-width:640px}
+.hero-facts b{display:block;font:600 38px/1 var(--serif);color:var(--gold-bright)}
+.hero-facts span{font-size:13px;color:var(--muted);letter-spacing:.06em}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-hint i{width:1px;height:42px;background:linear-gradient(var(--gold),transparent);animation:drip 2.2s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* quests */
+.quests-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:54px}
+.quest{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--surface);border:1px solid var(--line);min-height:560px;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;transition:border-color .4s, transform .4s}
+.quest:hover{border-color:var(--line-strong);transform:translateY(-4px)}
+.quest img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:brightness(.6) saturate(.85);transition:transform 1.2s cubic-bezier(.2,.7,.2,1), filter .6s}
+.quest:hover img{transform:scale(1.07);filter:brightness(.75) saturate(1)}
+.quest::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,7,10,0) 20%,rgba(7,7,10,.85) 62%,rgba(7,7,10,.98))}
+.quest-body{padding:34px}
+.quest-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tag{font-size:12px;letter-spacing:.08em;padding:6px 12px;border-radius:999px;border:1px solid var(--line-strong);color:var(--gold-bright);background:rgba(7,7,10,.5);backdrop-filter:blur(6px)}
+.tag.red{border-color:rgba(200,40,60,.5);color:#ff8d9b}
+.quest h3{font-size:clamp(38px,4vw,52px);margin-bottom:12px}
+.quest p{color:#bdb5a6;margin-bottom:26px;max-width:460px}
+.quest-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.price{font:600 30px/1 var(--serif);color:var(--gold-bright)}
+.price small{font:500 13px var(--sans);color:var(--muted);margin-right:6px}
+
+/* prices */
+.prices{background:linear-gradient(180deg,var(--bg),var(--bg-2) 30%,var(--bg-2) 70%,var(--bg))}
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:50px}
+.pcard{padding:32px 26px;border-radius:var(--radius);background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--line);position:relative;overflow:hidden}
+.pcard::after{content:"";position:absolute;top:0;left:22px;right:22px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5}
+.pcard.hl{border-color:rgba(200,40,60,.45);box-shadow:0 20px 60px -30px var(--blood-glow)}
+.pcard.hl::after{background:linear-gradient(90deg,transparent,#e0364f,transparent);opacity:.9}
+.pcard .v{font:600 50px/1 var(--serif);color:var(--gold-bright);margin:16px 0 6px}
+.pcard .v sup{font-size:.45em;margin-left:4px;vertical-align:.9em}
+.pcard .l{font-weight:600;letter-spacing:.02em}
+.pcard .d{color:var(--muted);font-size:14px;margin-top:6px}
+.note{margin-top:22px;color:var(--muted);font-size:14px}
+.note b{color:var(--gold)}
+
+/* audience tabs */
+.split{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:start}
+.tabs{display:inline-flex;padding:5px;border-radius:999px;background:var(--surface);border:1px solid var(--line);margin:8px 0 30px}
+.tabs button{background:none;border:0;color:var(--muted);font:600 13px var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:12px 22px;border-radius:999px;cursor:pointer;transition:all .25s}
+.tabs button[aria-selected="true"]{background:var(--gold);color:#140f07}
+.panel[hidden]{display:none}
+.panel p{color:#c9c1b2;margin-bottom:16px}
+.checklist{list-style:none;display:grid;gap:14px;margin-top:22px}
+.checklist li{display:flex;gap:14px;align-items:flex-start;color:#d8d1c3}
+.checklist li::before{content:"✦";color:var(--blood);flex:none;margin-top:1px}
+.feature{display:grid;gap:16px}
+.frow{display:flex;gap:18px;padding:24px;border-radius:var(--radius);border:1px solid var(--line);background:var(--surface)}
+.frow .ic{flex:none;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:rgba(214,178,110,.08);border:1px solid var(--line-strong);color:var(--gold)}
+.frow .ic svg{width:22px;height:22px}
+.frow h4{font:600 22px/1.2 var(--serif);margin-bottom:4px}
+.frow p{color:var(--muted);font-size:15px}
+
+/* tea rooms */
+.rooms-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.room{padding:38px;border-radius:var(--radius);border:1px solid var(--line);position:relative;overflow:hidden;background:var(--surface)}
+.room .glow{position:absolute;width:320px;height:320px;border-radius:50%;filter:blur(80px);opacity:.28;top:-120px;right:-100px;pointer-events:none}
+.room h3{font-size:34px;margin:10px 0 14px}
+.room p{color:#bdb5a6;margin-bottom:18px}
+.room ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.room li{font-size:13px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:#d8d1c3}
+.room .cap{margin-top:22px;padding-top:18px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:14px}
+.room .cap b{color:var(--gold-bright);font-family:var(--serif);font-size:24px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;counter-reset:s;border-top:1px solid var(--line)}
+.step{padding:34px 26px 0 0;position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);font:italic 600 64px/1 var(--serif);color:transparent;-webkit-text-stroke:1px var(--line-strong);display:block;margin-bottom:14px}
+.step::after{content:"";position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:var(--blood);box-shadow:0 0 14px var(--blood)}
+.step h4{font:600 24px/1.2 var(--serif);margin-bottom:8px}
+.step p{color:var(--muted);font-size:15px}
+
+/* faq */
+.faq{max-width:860px;margin:44px auto 0}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:26px 44px 26px 0;font:600 24px/1.3 var(--serif);position:relative;transition:color .2s}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font:300 30px var(--sans);color:var(--gold);transition:transform .3s}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq summary:hover{color:var(--gold-bright)}
+.faq details p{color:#bdb5a6;padding:0 0 26px;max-width:720px}
+
+/* rules + promo */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.box{padding:44px;border-radius:var(--radius);border:1px solid var(--line);background:var(--surface)}
+.box h3{font-size:38px;margin:12px 0 20px}
+.rules{list-style:none;display:grid;gap:14px}
+.rules li{display:flex;gap:16px;align-items:center;color:#d8d1c3}
+.rules li span{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(200,40,60,.5);color:#ff8d9b;font-size:14px}
+.box small{display:block;margin-top:22px;color:var(--muted)}
+.promo{background:radial-gradient(circle at 100% 0%,rgba(163,22,42,.35),transparent 60%),var(--surface)}
+.promo .big{font:italic 600 26px/1.35 var(--serif);color:var(--text);margin-bottom:18px}
+
+/* certificate */
+.cert{margin-top:0;border-radius:22px;overflow:hidden;position:relative;border:1px solid var(--line-strong);background:
+  linear-gradient(100deg,rgba(7,7,10,.96) 35%,rgba(7,7,10,.55)),url("https://questos.ru/r/img/cerificate-1202x315.jpg") center/cover;
+  padding:64px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center}
+.cert h2{margin-top:10px}
+.cert p{color:#c9c1b2;max-width:520px}
+.cert-card{justify-self:end;width:100%;max-width:340px;aspect-ratio:1.6;border-radius:16px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;
+  background:linear-gradient(135deg,#2a2016,#0f0c09 60%,#2a1a12);border:1px solid var(--gold);box-shadow:0 30px 80px -20px rgba(0,0,0,.9),0 0 50px -10px rgba(214,178,110,.35);transform:rotate(-4deg);transition:transform .5s}
+.cert-card:hover{transform:rotate(0) scale(1.03)}
+.cert-card .logo{font-size:26px}
+.cert-card .sum{font:600 44px/1 var(--serif);color:var(--gold-bright)}
+.cert-card .sub{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.cert-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+
+/* contacts */
+.contacts-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:28px;margin-top:48px;align-items:stretch}
+.cinfo{display:grid;gap:14px;align-content:start}
+.crow{padding:24px 26px;border-radius:var(--radius);border:1px solid var(--line);background:var(--surface)}
+.crow .k{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.crow .v{font:600 24px/1.3 var(--serif)}
+.crow .v a:hover{color:var(--gold-bright)}
+.crow p{color:var(--muted);font-size:15px;margin-top:6px}
+.map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);min-height:420px;position:relative;background:var(--surface)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:invert(.92) hue-rotate(180deg) grayscale(.6) contrast(.9) brightness(.9)}
+
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer a:hover{color:var(--gold-bright)}
+
+/* floating call button (mobile) */
+.fab{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;display:none;place-items:center;background:linear-gradient(180deg,#c01d34,#86101f);color:#fff;box-shadow:0 10px 30px -6px var(--blood-glow);animation:pulse 2.6s infinite}
+.fab svg{width:24px;height:24px}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(192,29,52,.55)}70%{box-shadow:0 0 0 18px rgba(192,29,52,0)}100%{box-shadow:0 0 0 0 rgba(192,29,52,0)}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* responsive */
+@media (max-width:1180px){
+  .nav ul{display:none}
+  .burger{display:block}
+  .nav.open ul{display:flex;flex-direction:column;position:absolute;top:74px;left:0;right:0;background:rgba(7,7,10,.97);padding:24px;gap:22px;border-bottom:1px solid var(--line)}
+  .price-grid{grid-template-columns:repeat(2,1fr)}
+  .split{grid-template-columns:1fr;gap:40px}
+  .steps{grid-template-columns:repeat(2,1fr);row-gap:30px}
+  .cert{grid-template-columns:1fr;padding:44px}
+  .cert-card{justify-self:start}
+}
+@media (max-width:760px){
+  section{padding:80px 0}
+  .wrap{padding:0 16px}
+  .nav-phone span{display:none}
+  .quests-grid,.rooms-grid,.duo,.contacts-grid{grid-template-columns:1fr}
+  .quest{min-height:480px}
+  .quest-body,.box,.room{padding:26px}
+  .price-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;border-top:0;border-left:1px solid var(--line);margin-left:4px}
+  .step{padding:0 0 0 26px}
+  .step::after{top:22px;left:-4px}
+  .cert{padding:30px 22px}
+  .hero-facts{gap:26px}
+  .fab{display:grid}
+  .scroll-hint{display:none}
+  .map{min-height:320px}
+}
+@media (max-height:900px){.scroll-hint{display:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Questos — на главную">Questos<span>.</span></a>
+    <nav aria-label="Основное меню">
+      <ul id="menu">
+        <li><a href="#quests">Квесты</a></li>
+        <li><a href="#prices">Стоимость</a></li>
+        <li><a href="#birthday">День рождения</a></li>
+        <li><a href="#booking">Бронирование</a></li>
+        <li><a href="#rules">Правила</a></li>
+        <li><a href="#certificate">Сертификат</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+    <a class="nav-phone" href="tel:+79039398178">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      <span>+7 903 939-81-78</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg" role="img" aria-label="Девушка в красном платье на балконе ночного города"></div>
+  <div class="hero-dark"></div>
+  <div class="fog"></div><div class="fog f2"></div>
+  <div class="wrap">
+    <div class="eyebrow">Реалити-квесты · Новосибирск</div>
+    <h1>Шагни туда, где&nbsp;начинается <span class="flicker">тайна</span></h1>
+    <p>Два атмосферных мира — пиратское приключение и шпионский детектив. Час, за который вы забудете, что это игра. Лучший способ отметить день рождения.</p>
+    <div class="hero-actions">
+      <a class="btn btn-blood" href="#quests">Выбрать квест
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="tel:+79039398178">Позвонить</a>
+    </div>
+    <div class="hero-facts">
+      <div><b>60</b><span>минут игры</span></div>
+      <div><b>2–12</b><span>игроков в компании</span></div>
+      <div><b>8+</b><span>подходит детям</span></div>
+      <div><b>2 мин</b><span>от м. Студенческая</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint">Вниз<i></i></div>
+</section>
+
+<!-- ===== QUESTS ===== -->
+<section id="quests">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Наши локации</div>
+      <h2>Выберите, <em>кем</em> вы станете сегодня</h2>
+      <p class="lead">Живой реквизит, продуманные загадки и атмосфера, от которой по спине бегут мурашки.</p>
+    </div>
+    <div class="quests-grid">
+      <article class="quest reveal">
+        <img src="https://questos.ru/thumbs/data/photo/Quest/ape_z2xb_i95umf7t-ou5qgvymvzrdjiecenfztyui2o.jpg/530x310_fc.jpg" alt="Локация квеста «Пираты»" loading="lazy">
+        <div class="quest-body">
+          <div class="quest-tags"><span class="tag">Приключение</span><span class="tag">2–4 игрока</span><span class="tag">8+</span><span class="tag red">Можем попугать</span></div>
+          <h3>Пираты</h3>
+          <p>Настоящие пиратские приключения — потрясающий реквизит, просоленная атмосфера и сокровища, которые ещё нужно найти. Для поклонников жанра — можем попугать.</p>
+          <div class="quest-foot">
+            <div class="price"><small>от</small>3 500 ₽</div>
+            <a class="btn btn-blood" href="https://questos.ru/quest/1/pirati#quest-details">Забронировать</a>
+          </div>
+        </div>
+      </article>
+      <article class="quest reveal">
+        <img src="https://questos.ru/thumbs/data/photo/Quest/vzz6texenva.jpg/530x310_fc.jpg" alt="Локация квеста «Тайна шпиона»" loading="lazy">
+        <div class="quest-body">
+          <div class="quest-tags"><span class="tag">Детектив</span><span class="tag">2–4 игрока</span><span class="tag">8+</span></div>
+          <h3>Тайна шпиона</h3>
+          <p>Шпионский детектив. Разгадайте тайну агента и найдите коды запуска ядерных ракет, пока не стало слишком поздно. И это будет отнюдь не просто…</p>
+          <div class="quest-foot">
+            <div class="price"><small>от</small>3 500 ₽</div>
+            <a class="btn btn-blood" href="https://questos.ru/quest/2/taina-shpiona#quest-details">Забронировать</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICES ===== -->
+<section class="prices" id="prices">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Стоимость</div>
+      <h2>Цена — за <em>всю команду</em></h2>
+      <p class="lead">Не за человека. Оплата перед игрой, заранее — предоплата от 1000 ₽.</p>
+    </div>
+    <div class="price-grid">
+      <div class="pcard reveal"><div class="l">Будние дни</div><div class="v">3 500<sup>₽</sup></div><div class="d">до 4 игроков</div></div>
+      <div class="pcard hl reveal"><div class="l">Выходные и праздники</div><div class="v">4 000<sup>₽</sup></div><div class="d">до 4 игроков</div></div>
+      <div class="pcard reveal"><div class="l">Если играете вдвоём</div><div class="v">3 500<sup>₽</sup></div><div class="d">в любой день</div></div>
+      <div class="pcard reveal"><div class="l">Доп. участник</div><div class="v">600<sup>₽</sup></div><div class="d">сверх 4 игроков, до 7 в локации</div></div>
+    </div>
+    <p class="note reveal">Чайная комната после игры — <b>700 ₽/час</b>. Большим компаниям от 8 человек — скидка обсуждается индивидуально.</p>
+  </div>
+</section>
+
+<!-- ===== BIRTHDAY / AUDIENCE ===== -->
+<section id="birthday">
+  <div class="wrap split">
+    <div class="reveal">
+      <div class="eyebrow">Где отметить день рождения</div>
+      <h2>Праздник, который <em>запомнят</em></h2>
+      <div class="tabs" role="tablist" aria-label="Для кого">
+        <button role="tab" aria-selected="true" aria-controls="p-adult" id="t-adult">Взрослым</button>
+        <button role="tab" aria-selected="false" aria-controls="p-kids" id="t-kids">Детям 8+</button>
+      </div>
+      <div class="panel" id="p-adult" role="tabpanel" aria-labelledby="t-adult">
+        <p>Questos — это атмосферные квесты и лучший способ отметить день рождения или просто весело провести вечер с друзьями.</p>
+        <ul class="checklist">
+          <li>Одна локация для компании до 7 человек</li>
+          <li>Две локации одновременно — для компании до 12 человек</li>
+          <li>После игры — тематическая чайная комната с транслированием квеста на ТВ</li>
+          <li>Имениннику — фирменный подарок</li>
+        </ul>
+      </div>
+      <div class="panel" id="p-kids" role="tabpanel" aria-labelledby="t-kids" hidden>
+        <p>Квесты для детей и подростков от 8 лет — яркий детский день рождения без хлопот для родителей.</p>
+        <ul class="checklist">
+          <li>Обе локации адаптированы для детей 8+</li>
+          <li>Родители в чайной смотрят, как дети проходят квест, на телевизоре</li>
+          <li>Можно заказать праздничную одноразовую посуду с сервировкой</li>
+          <li>Имениннику — фирменный подарок</li>
+        </ul>
+      </div>
+    </div>
+    <div class="feature reveal">
+      <div class="frow">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div><h4>Около часа игры</h4><p>Столько длится прохождение одной локации — погружение полное, без спешки.</p></div>
+      </div>
+      <div class="frow">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.6c2.8-.3 4.9 1.4 5.5 4.4"/></svg></div>
+        <div><h4>Большие компании</h4><p>До 7 человек в одной локации или до 12 человек сразу в двух.</p></div>
+      </div>
+      <div class="frow">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3c0 1.5 1 1.5 1 3M12 3c0 1.5 1 1.5 1 3"/></svg></div>
+        <div><h4>Две чайные комнаты</h4><p>До 12 гостей, 700 ₽ в час. Торт, чай и обсуждение самых острых моментов.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEA ROOMS ===== -->
+<section id="tea" style="padding-top:0">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Чайные комнаты</div>
+      <h2>После игры — <em>за стол</em></h2>
+      <p class="lead">Обе комнаты находятся в том же помещении, что и квесты. При бронировании поставьте галочку «чайная зона».</p>
+    </div>
+    <div class="rooms-grid">
+      <div class="room reveal">
+        <div class="glow" style="background:#d6b26e"></div>
+        <div class="eyebrow">Комната №1</div>
+        <h3>Пиратская таверна</h3>
+        <p>Большой стол с лавками, декоративный камин, дискошар и музыка. А на телевизоре — прямая трансляция квеста: видно и слышно, как играют ваши друзья или дети.</p>
+        <ul><li>Камин</li><li>Дискошар и музыка</li><li>ТВ-трансляция квеста</li><li>Кулер</li><li>Посуда и нож для торта</li></ul>
+        <div class="cap"><span>до 12 человек</span><b>700 ₽/час</b></div>
+      </div>
+      <div class="room reveal">
+        <div class="glow" style="background:#a3162a"></div>
+        <div class="eyebrow">Комната №2</div>
+        <h3>Мастерская художника-шпиона</h3>
+        <p>Четыре дивана и два стола — уютно и просторно. Всё необходимое для чаепития уже на месте.</p>
+        <ul><li>4 дивана</li><li>2 стола</li><li>Кулер</li><li>Посуда и нож для торта</li></ul>
+        <div class="cap"><span>до 12 человек</span><b>700 ₽/час</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOOKING ===== -->
+<section id="booking" class="prices">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Бронирование</div>
+      <h2>Четыре шага <em>до тайны</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h4>Выберите квест</h4><p>«Пираты» или «Тайна шпиона» — нажмите «Забронировать».</p></div>
+      <div class="step reveal"><h4>Дата и время</h4><p>Выберите удобный слот в расписании.</p></div>
+      <div class="step reveal"><h4>Комментарий</h4><p>Сколько игроков, их возраст и нужна ли чайная зона.</p></div>
+      <div class="step reveal"><h4>Подтверждение</h4><p>Предоплата от 1000 ₽. Накануне администратор позвонит, а мы пришлём SMS-напоминание.</p></div>
+    </div>
+    <div class="hero-actions reveal" style="margin-top:50px">
+      <a class="btn btn-blood" href="https://questos.ru/quest/1/pirati#quest-details">Бронь: Пираты</a>
+      <a class="btn btn-blood" href="https://questos.ru/quest/2/taina-shpiona#quest-details">Бронь: Тайна шпиона</a>
+      <a class="btn btn-ghost" href="tel:+79039398178">Уточнить по телефону</a>
+    </div>
+
+    <div class="faq reveal">
+      <details><summary>Сколько длится игра?</summary><p>Прохождение одной локации занимает около часа.</p></details>
+      <details><summary>Можно ли прийти большой компанией?</summary><p>Да. В одну локацию — до 7 человек (сверх 4 игроков — 600 ₽ за каждого), в две локации одновременно — до 12 человек. От 8 человек скидку обсуждаем индивидуально.</p></details>
+      <details><summary>Как оплатить?</summary><p>Оплатить игру можно непосредственно перед началом, но заранее нужно внести частичную предоплату — не менее 1000 ₽.</p></details>
+      <details><summary>Подходит ли квест детям?</summary><p>Да, обе локации рассчитаны на детей от 8 лет. Пока дети играют, взрослые могут смотреть трансляцию из чайной комнаты «Пиратская таверна».</p></details>
+      <details><summary>Будет ли страшно?</summary><p>Только если вы сами этого захотите. В «Пиратах» для поклонников жанра можем добавить элементы хоррора — скажите об этом в комментарии к брони.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RULES + PROMO ===== -->
+<section id="rules">
+  <div class="wrap duo">
+    <div class="box reveal">
+      <div class="eyebrow">Правила игры</div>
+      <h3>Кодекс игрока</h3>
+      <ul class="rules">
+        <li><span>I</span>Не применять силу</li>
+        <li><span>II</span>Бережно относиться к предметам и антуражу</li>
+        <li><span>III</span>Людей в нетрезвом состоянии мы не пускаем</li>
+        <li><span>IV</span>Мат запрещён</li>
+      </ul>
+      <small>Подробный инструктаж проведёт администратор перед игрой. Удачи — и отличной игры с Questos!</small>
+    </div>
+    <div class="box promo reveal">
+      <div class="eyebrow">Скидки и акции</div>
+      <h3>Для особых случаев</h3>
+      <p class="big">Имениннику — фирменный подарок от Questos.</p>
+      <ul class="checklist">
+        <li>При бронировании от 8 человек скидки обговариваются индивидуально</li>
+        <li>Играете вдвоём в выходной — всё равно 3500 ₽</li>
+      </ul>
+      <div style="margin-top:28px"><a class="btn btn-ghost" href="#booking">Перейти к бронированию</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CERTIFICATE ===== -->
+<section id="certificate" style="padding-top:0">
+  <div class="wrap">
+    <div class="cert reveal">
+      <div>
+        <div class="eyebrow">Подарочный сертификат</div>
+        <h2>Подарите <em>эмоции</em></h2>
+        <p>Драйв, тайна, атмосферные сюжеты и радость победы — гарантированы. Бесплатная доставка в пределах города.</p>
+        <div class="cert-actions">
+          <a class="btn btn-blood" href="tel:+79039398178">Заказать по телефону</a>
+        </div>
+      </div>
+      <div class="cert-card" aria-hidden="true">
+        <div class="logo">Questos<span>.</span></div>
+        <div><div class="sub">Подарочный сертификат</div><div class="sum">4 000 ₽</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTS ===== -->
+<section id="contacts" class="prices">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Как нас найти</div>
+      <h2>Вход — <em>за кинотеатром</em></h2>
+    </div>
+    <div class="contacts-grid">
+      <div class="cinfo reveal">
+        <div class="crow"><div class="k">Адрес</div><div class="v">пр. Карла Маркса, 47/1</div><p>Отдельный вход за кинотеатром «Аврора», слева. От метро «Студенческая» — 2 минуты пешком (выход к «Авроре»).</p></div>
+        <div class="crow"><div class="k">Телефон</div><div class="v"><a href="tel:+79039398178">+7 903 939-81-78</a></div></div>
+        <div class="crow"><div class="k">Почта</div><div class="v"><a href="mailto:superostrovnsk@gmail.com">superostrovnsk@gmail.com</a></div></div>
+      </div>
+      <div class="map reveal">
+        <iframe title="Карта: Новосибирск, пр. Карла Маркса 47/1" loading="lazy"
+          src="https://yandex.ru/map-widget/v1/?text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9A%D0%B0%D1%80%D0%BB%D0%B0%20%D0%9C%D0%B0%D1%80%D0%BA%D1%81%D0%B0%2C%2047%2F1&z=16"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo" style="font-size:24px">Questos<span>.</span></a>
+    <div>Атмосферные реалити-квесты в Новосибирске · <span id="year">2026</span></div>
+    <a href="tel:+79039398178">+7 903 939-81-78</a>
+  </div>
+</footer>
+
+<a class="fab" href="tel:+79039398178" aria-label="Позвонить в Questos">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+</a>
+
+<script>
+// sticky nav background
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', scrollY > 30);
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+// mobile menu
+const burger = document.getElementById('burger');
+burger.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
+});
+document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open'); burger.setAttribute('aria-expanded', false);
+}));
+
+// flashlight in hero follows the cursor
+const hero = document.getElementById('hero');
+hero.addEventListener('pointermove', e => {
+  const r = hero.getBoundingClientRect();
+  hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+  hero.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+});
+
+// audience tabs
+const tabs = document.querySelectorAll('[role="tab"]');
+tabs.forEach(t => t.addEventListener('click', () => {
+  tabs.forEach(x => {
+    const on = x === t;
+    x.setAttribute('aria-selected', on);
+    document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+  });
+}));
+
+// scroll reveal
+const io = new IntersectionObserver(entries => entries.forEach(en => {
+  if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+}), {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 80 + 'ms';
+  io.observe(el);
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
