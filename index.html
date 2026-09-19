@@ -120,10 +120,10 @@ section{position:relative;padding:110px 0}
 /* prices */
 .prices{background:linear-gradient(180deg,var(--bg),var(--bg-2) 30%,var(--bg-2) 70%,var(--bg))}
 .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:50px}
-.pcard{padding:32px 26px;border-radius:var(--radius);background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--line);position:relative;overflow:hidden}
-.pcard::after{content:"";position:absolute;top:0;left:22px;right:22px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5}
-.pcard.hl{border-color:rgba(200,40,60,.45);box-shadow:0 20px 60px -30px var(--blood-glow)}
-.pcard.hl::after{background:linear-gradient(90deg,transparent,#e0364f,transparent);opacity:.9}
+.pcard{padding:32px 26px;border-radius:var(--radius);background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--line);position:relative;overflow:hidden;transition:border-color .35s, box-shadow .35s, transform .35s}
+.pcard::after{content:"";position:absolute;top:0;left:22px;right:22px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5;transition:opacity .35s, background .35s}
+.pcard:hover{transform:translateY(-3px);border-color:rgba(200,40,60,.45);box-shadow:0 20px 60px -30px var(--blood-glow)}
+.pcard:hover::after{background:linear-gradient(90deg,transparent,#e0364f,transparent);opacity:.9}
 .pcard .v{font:600 50px/1 var(--serif);color:var(--gold-bright);margin:16px 0 6px}
 .pcard .v sup{font-size:.45em;margin-left:4px;vertical-align:.9em}
 .pcard .l{font-weight:600;letter-spacing:.02em}
@@ -225,6 +225,8 @@ footer a:hover{color:var(--gold-bright)}
 /* reveal */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
+.pcard.reveal.in{transition:border-color .35s, box-shadow .35s, transform .35s}
+.pcard.reveal.in:hover{transform:translateY(-3px)}
 
 /* responsive */
 @media (max-width:1180px){
@@ -361,7 +363,7 @@ footer a:hover{color:var(--gold-bright)}
     </div>
     <div class="price-grid">
       <div class="pcard reveal"><div class="l">Будние дни</div><div class="v">3 500<sup>₽</sup></div><div class="d">до 4 игроков</div></div>
-      <div class="pcard hl reveal"><div class="l">Выходные и праздники</div><div class="v">4 000<sup>₽</sup></div><div class="d">до 4 игроков</div></div>
+      <div class="pcard reveal"><div class="l">Выходные и праздники</div><div class="v">4 000<sup>₽</sup></div><div class="d">до 4 игроков</div></div>
       <div class="pcard reveal"><div class="l">Если играете вдвоём</div><div class="v">3 500<sup>₽</sup></div><div class="d">в любой день</div></div>
       <div class="pcard reveal"><div class="l">Доп. участник</div><div class="v">600<sup>₽</sup></div><div class="d">сверх 4 игроков, до 7 в локации</div></div>
     </div>
