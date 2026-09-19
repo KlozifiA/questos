@@ -194,10 +194,23 @@ footer .logo img{height:40px}
 .promo .big{font:italic 600 26px/1.35 var(--serif);color:var(--text);margin-bottom:18px}
 
 /* certificate */
-/* reviews (Flamp widget) */
-.reviews-frame{margin:44px auto 0;max-width:760px;padding:10px;border-radius:18px;border:1px solid var(--line-strong);background:linear-gradient(180deg,var(--surface-2),var(--surface));box-shadow:0 30px 80px -40px rgba(0,160,224,.45)}
-.reviews-frame iframe{display:block;width:100%;height:300px;border:0;border-radius:10px;background:#fff}
-@media (max-width:760px){.reviews-frame iframe{height:420px}}
+/* reviews */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.review{position:relative;display:flex;flex-direction:column;padding:34px 30px 28px;border-radius:var(--radius);border:1px solid var(--line);
+  background:linear-gradient(180deg,var(--surface-2),var(--surface));overflow:hidden;transition:border-color .35s, box-shadow .35s}
+.review:hover{border-color:var(--line-strong);box-shadow:0 20px 60px -30px var(--blood-glow)}
+.review::before{content:"\201C";position:absolute;top:-18px;right:18px;font:italic 700 150px/1 var(--serif);color:var(--gold);opacity:.12;pointer-events:none}
+.stars{color:var(--gold);letter-spacing:.18em;font-size:15px;margin-bottom:16px}
+.review blockquote{color:#d0dde6;font-size:15.5px;line-height:1.7;margin-bottom:24px}
+.review footer{all:unset;margin-top:auto;display:flex;align-items:center;gap:14px;padding-top:18px;border-top:1px dashed var(--line)}
+.review .ava{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font:600 18px var(--serif);color:var(--gold-bright);
+  background:rgba(60,184,240,.1);border:1px solid var(--line-strong)}
+.review .who{font-weight:600;font-size:15px;color:var(--text)}
+.review .when{font-size:13px;color:var(--muted)}
+.reviews-cta{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:center;margin-top:40px}
+.reviews-cta .count{color:var(--muted);font-size:15px}
+.reviews-cta .count b{font:600 30px/1 var(--serif);color:var(--gold-bright);margin-right:6px}
+@media (max-width:1020px){.reviews-grid{grid-template-columns:1fr;max-width:640px;margin-left:auto;margin-right:auto}}
 .cert{margin-top:0;border-radius:22px;overflow:hidden;position:relative;border:1px solid var(--line-strong);background:
   linear-gradient(100deg,rgba(5,8,13,.96) 35%,rgba(5,8,13,.55)),url("https://questos.ru/r/img/cerificate-1202x315.jpg") center/cover;
   padding:64px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center}
@@ -520,11 +533,37 @@ footer a:hover{color:var(--gold-bright)}
     <div class="reveal" style="text-align:center">
       <div class="eyebrow">Отзывы</div>
       <h2>Что говорят <em>игроки</em></h2>
-      <p class="lead" style="margin:0 auto">Настоящие отзывы наших гостей на Flamp.</p>
+      <p class="lead" style="margin:0 auto">Настоящие отзывы наших гостей с Flamp — без редактуры.</p>
     </div>
-    <div class="reviews-frame reveal">
-      <iframe title="Отзывы о Questos на Flamp" loading="lazy" scrolling="no"
-        src="https://widget.flamp.ru/?id=70000001019921614&amp;type=big&amp;count=3&amp;orientation=landscape&amp;"></iframe>
+    <div class="reviews-grid">
+      <article class="review reveal">
+        <div class="stars" aria-label="Оценка 5 из 5">★★★★★</div>
+        <blockquote>Спасибо большое организаторам! Дети в восторге) были впервые и вышли с массой положительных эмоций 🥳 все классно 👍 мы были очень шумные 😂 спасибо за выдержку 👍</blockquote>
+        <footer>
+          <div class="ava" aria-hidden="true">А</div>
+          <div><div class="who">Ангелина Орлова</div><div class="when"><a href="https://novosibirsk.flamp.ru/firm/questos_kompaniya_po_organizacii_kvestov_dlya_detejj_i_vzroslykh-70000001019921614/otzyv-8281637" target="_blank" rel="noopener">17 апреля 2023 · Flamp</a></div></div>
+        </footer>
+      </article>
+      <article class="review reveal">
+        <div class="stars" aria-label="Оценка 5 из 5">★★★★★</div>
+        <blockquote>Хотим выразить отдельную благодарность администратору Анастасии за отличное проведение квеста. Дети в восторге!!! Будем рекомендовать Ваше заведение для проведения праздников!!!</blockquote>
+        <footer>
+          <div class="ava" aria-hidden="true">M</div>
+          <div><div class="who">Marina Belyanina</div><div class="when"><a href="https://novosibirsk.flamp.ru/firm/questos_kompaniya_po_organizacii_kvestov_dlya_detejj_i_vzroslykh-70000001019921614/otzyv-6819700" target="_blank" rel="noopener">26 марта 2021 · Flamp</a></div></div>
+        </footer>
+      </article>
+      <article class="review reveal">
+        <div class="stars" aria-label="Оценка 5 из 5">★★★★★</div>
+        <blockquote>Прекрасная организация квеста Пираты! Администратор Катя, просто молодец и умница! Во всем помогала !Все очень понравилось, все довольны взрослые и дети! Радость, энергия и отличное отношение к людям и детям! Праздник, удался для детей и взрослых, все остались довольные и счастливые! Благодарим!</blockquote>
+        <footer>
+          <div class="ava" aria-hidden="true">A</div>
+          <div><div class="who">anna.9</div><div class="when"><a href="https://novosibirsk.flamp.ru/firm/questos_kompaniya_po_organizacii_kvestov_dlya_detejj_i_vzroslykh-70000001019921614/otzyv-6743499" target="_blank" rel="noopener">21 февраля 2021 · Flamp</a></div></div>
+        </footer>
+      </article>
+    </div>
+    <div class="reviews-cta reveal">
+      <div class="count"><b>62</b>отзыва на Flamp</div>
+      <a class="btn btn-ghost" href="https://novosibirsk.flamp.ru/firm/questos_kompaniya_po_organizacii_kvestov_dlya_detejj_i_vzroslykh-70000001019921614" target="_blank" rel="noopener">Читать все отзывы</a>
     </div>
   </div>
 </section>
