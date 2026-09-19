@@ -65,12 +65,12 @@ section{position:relative;padding:110px 0}
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .35s, border-color .35s, backdrop-filter .35s;border-bottom:1px solid transparent}
 .nav.scrolled{background:rgba(5,8,13,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
-.logo{display:inline-flex;align-items:center;line-height:0}
-.logo img{height:48px;width:auto;filter:drop-shadow(0 0 12px rgba(60,170,255,.35));transition:filter .3s}
+.logo{display:inline-flex;align-items:center;line-height:0;flex:none}
+.logo img{height:48px;width:auto;max-width:none;filter:drop-shadow(0 0 12px rgba(60,170,255,.35));transition:filter .3s}
 .logo:hover img{filter:drop-shadow(0 0 18px rgba(60,170,255,.6))}
 footer .logo img{height:40px}
-.nav ul{display:flex;gap:30px;list-style:none}
-.nav ul a{white-space:nowrap;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .2s;position:relative}
+.nav ul{display:flex;gap:20px;list-style:none}
+.nav ul a{white-space:nowrap;font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);transition:color .2s;position:relative}
 .nav ul a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--gold);transition:right .3s}
 .nav ul a:hover{color:var(--text)}
 .nav ul a:hover::after{right:0}
@@ -250,10 +250,12 @@ footer a:hover{color:var(--gold-bright)}
 .pcard.reveal.in:hover{transform:translateY(-3px)}
 
 /* responsive */
-@media (max-width:1180px){
+@media (max-width:1240px){
   .nav ul{display:none}
   .burger{display:block}
   .nav.open ul{display:flex;flex-direction:column;position:absolute;top:74px;left:0;right:0;background:rgba(5,8,13,.97);padding:24px;gap:22px;border-bottom:1px solid var(--line)}
+}
+@media (max-width:1180px){
   .price-grid{grid-template-columns:repeat(2,1fr)}
   .split{grid-template-columns:1fr;gap:40px}
   .steps{grid-template-columns:repeat(2,1fr);row-gap:30px}
