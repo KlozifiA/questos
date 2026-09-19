@@ -155,13 +155,13 @@ footer .logo img{height:40px}
 
 /* tea rooms */
 .rooms-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
-.room{padding:38px;border-radius:var(--radius);border:1px solid var(--line);position:relative;overflow:hidden;background:var(--surface)}
+.room{padding:38px;border-radius:var(--radius);border:1px solid var(--line);position:relative;overflow:hidden;background:var(--surface);display:flex;flex-direction:column}
 .room .glow{position:absolute;width:320px;height:320px;border-radius:50%;filter:blur(80px);opacity:.28;top:-120px;right:-100px;pointer-events:none}
 .room h3{font-size:34px;margin:10px 0 14px}
 .room p{color:#aebdc9;margin-bottom:18px}
-.room ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.room ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
 .room li{font-size:13px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:#d0dde6}
-.room .cap{margin-top:22px;padding-top:18px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:14px}
+.room .cap{margin-top:auto;padding-top:18px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:baseline;color:var(--muted);font-size:14px}
 .room .cap b{color:var(--gold-bright);font-family:var(--serif);font-size:24px}
 
 /* steps */
