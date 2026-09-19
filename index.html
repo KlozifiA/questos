@@ -32,7 +32,7 @@
   --sans:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
+html{scroll-behavior:smooth;scroll-padding-top:116px}
 body{background:var(--bg);color:var(--text);font:400 16px/1.65 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -61,8 +61,13 @@ section{position:relative;padding:110px 0}
 .btn-ghost:hover{background:rgba(60,184,240,.08);border-color:var(--gold)}
 .btn svg{width:16px;height:16px}
 
+/* concept banner */
+.concept-bar{position:fixed;top:0;left:0;right:0;z-index:60;height:36px;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 16px;background:linear-gradient(90deg,#0b5480,#1488c2,#0b5480);color:#fff;font:600 13px/1.2 var(--sans);letter-spacing:.02em;text-align:center;box-shadow:0 4px 20px -6px rgba(0,160,224,.6)}
+.concept-bar a{text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.concept-bar a:hover{color:#bfe6f7}
+@media (max-width:560px){.concept-bar{font-size:11.5px;gap:6px}.concept-bar a{display:none}}
 /* header */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .35s, border-color .35s, backdrop-filter .35s;border-bottom:1px solid transparent}
+.nav{position:fixed;top:36px;left:0;right:0;z-index:50;transition:background .35s, border-color .35s, backdrop-filter .35s;border-bottom:1px solid transparent}
 .nav.scrolled{background:rgba(5,8,13,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
 .logo{display:inline-flex;align-items:center;line-height:0;flex:none}
@@ -287,6 +292,8 @@ footer a:hover{color:var(--gold-bright)}
 </style>
 </head>
 <body>
+
+<div class="concept-bar" role="note"><span>Концепт редизайна questos.ru. Не официальный сайт</span><a href="https://questos.ru/" target="_blank" rel="noopener">Официальный сайт →</a></div>
 
 <!-- ===== NAV ===== -->
 <header class="nav" id="nav">
