@@ -6,7 +6,9 @@
 <title>Questos — атмосферные квесты в Новосибирске</title>
 <meta name="description" content="Questos — атмосферные квесты в Новосибирске: «Пираты» и «Тайна шпиона». Идеально для дня рождения, детских праздников и компаний до 12 человек. От 3500 ₽ за команду.">
 <meta name="theme-color" content="#07070a">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -63,8 +65,10 @@ section{position:relative;padding:110px 0}
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .35s, border-color .35s, backdrop-filter .35s;border-bottom:1px solid transparent}
 .nav.scrolled{background:rgba(7,7,10,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
-.logo{font:700 italic 30px/1 var(--serif);letter-spacing:.02em;color:var(--gold-bright);text-shadow:0 0 24px rgba(214,178,110,.35)}
-.logo span{color:var(--blood);font-style:normal}
+.logo{display:inline-flex;align-items:center;line-height:0}
+.logo img{height:48px;width:auto;filter:drop-shadow(0 0 12px rgba(60,170,255,.35));transition:filter .3s}
+.logo:hover img{filter:drop-shadow(0 0 18px rgba(60,170,255,.6))}
+footer .logo img{height:40px}
 .nav ul{display:flex;gap:30px;list-style:none}
 .nav ul a{white-space:nowrap;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .2s;position:relative}
 .nav ul a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--gold);transition:right .3s}
@@ -198,7 +202,7 @@ section{position:relative;padding:110px 0}
 .cert-card{justify-self:end;width:100%;max-width:340px;aspect-ratio:1.6;border-radius:16px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;
   background:linear-gradient(135deg,#2a2016,#0f0c09 60%,#2a1a12);border:1px solid var(--gold);box-shadow:0 30px 80px -20px rgba(0,0,0,.9),0 0 50px -10px rgba(214,178,110,.35);transform:rotate(-4deg);transition:transform .5s}
 .cert-card:hover{transform:rotate(0) scale(1.03)}
-.cert-card .logo{font-size:26px}
+.cert-card .logo img{height:46px}
 .cert-card .sum{font:600 44px/1 var(--serif);color:var(--gold-bright)}
 .cert-card .sub{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 .cert-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
@@ -270,7 +274,7 @@ footer a:hover{color:var(--gold-bright)}
 <!-- ===== NAV ===== -->
 <header class="nav" id="nav">
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="Questos — на главную">Questos<span>.</span></a>
+    <a href="#top" class="logo" aria-label="Questos — на главную"><img src="logo.png" alt="Questos" width="392" height="194"></a>
     <nav aria-label="Основное меню">
       <ul id="menu">
         <li><a href="#quests">Квесты</a></li>
@@ -517,7 +521,7 @@ footer a:hover{color:var(--gold-bright)}
         </div>
       </div>
       <div class="cert-card" aria-hidden="true">
-        <div class="logo">Questos<span>.</span></div>
+        <div class="logo"><img src="logo.png" alt="" width="392" height="194"></div>
         <div><div class="sub">Подарочный сертификат</div><div class="sum">4 000 ₽</div></div>
       </div>
     </div>
@@ -548,7 +552,7 @@ footer a:hover{color:var(--gold-bright)}
 
 <footer>
   <div class="wrap">
-    <a href="#top" class="logo" style="font-size:24px">Questos<span>.</span></a>
+    <a href="#top" class="logo"><img src="logo.png" alt="Questos" width="392" height="194"></a>
     <div>Атмосферные реалити-квесты в Новосибирске · <span id="year">2026</span></div>
     <a href="tel:+79039398178">+7 903 939-81-78</a>
     <a class="footer-link" href="http://www.wedgo.net" target="_blank" rel="noopener">Destination photographers in Maldives, Seychelles, Mauritius, Bali</a>
